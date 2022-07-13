@@ -1,0 +1,7 @@
+Building DAG of jobs...
+MissingInputException in line 1 of /home/ethan/Documents/labWork/mathPeopleRequests/rlooperAllSMRFData/workflow/rules/processPlasmids.smk:
+Missing input files for rule genbank_to_fasta:
+    output: output/plasmids/pFC53.fa
+    wildcards: plasmid=pFC53
+    affected files:
+        data/pFC53.gb

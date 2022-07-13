@@ -1,0 +1,7 @@
+condition_name	plasmid	sigma
+supercoiled	pFC53	-0.07
+supercoiled	pFC8	-0.07
+linear	pFC53	0
+linear	pFC8	0
+hypernegative	pFC53	-0.105
+hypernegative	pFC8	-0.105

@@ -1,0 +1,20 @@
+import pandas as pd
+
+conditions = pd.read_csv('workflow/conditions.tsv', sep='\t')
+number_runs_per_condition=10
+
+include: 'rules/rlooper.smk'
+include: 'rules/processPlasmids.smk'
+
+runs = expand(
+    'output/rlooper/{plasmid}/{plasmid}.{condition}.{sigma}.{run_num}.{orrientation}',
+    plasmid=list(conditions['plasmid']), condition=list(conditions['condition_name']),
+    sigma=list(conditions['sigma']), run_num=range(number_runs_per_condition),
+    orrientation=['fwd', 'rev']
+    )
+
+
+rule all:
+    input:
+        runs
+    
