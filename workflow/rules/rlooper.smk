@@ -3,7 +3,7 @@ rule compile_rlooper:
         'software/rlooper/rlooper'
     shell:'''
     mkdir -p software/rlooper
-    cd ../submodules/rlooper
+    cd submodules/rlooper
     make all
     mv bin/rlooper ../software/rlooper
     '''
