@@ -13,11 +13,12 @@ rule run_rlooper_reverse:
         exe='software/rlooper/rlooper',
         plasmid_fa='workflow/data/{plasmid}.fa',
     output:
-        'output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/{plasmid}.{condition}.sigma{sigma}.rev.wig'
+        folder='output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/{plasmid}.{condition}.sigma{sigma}.rev',
+        wig='output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/{plasmid}.{condition}.sigma{sigma}.rev.wig_bpprob'
     params:
         sigma=lambda wildcards: wildcards['sigma']
     shell:'''
-    {input.exe} {input.plasmid_fa} {output} --sigma {params.sigma} --N auto --localaverageenergy --reverse
+    {input.exe} {input.plasmid_fa} {output.folder} --sigma {params.sigma} --N auto --localaverageenergy --reverse
     '''
 
 
@@ -26,9 +27,23 @@ rule run_rlooper_fwd:
         exe='software/rlooper/rlooper',
         plasmid_fa='workflow/data/{plasmid}.fa',
     output:
-        'output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.fwd/{plasmid}.{condition}.sigma{sigma}.fwd.wig'
+        folder='output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.fwd/{plasmid}.{condition}.sigma{sigma}.fwd',
+        wig='output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/{plasmid}.{condition}.sigma{sigma}.fwd.wig_bpprob'
     params:
         sigma=lambda wildcards: wildcards['sigma']
     shell:'''
-    {input.exe} {input.plasmid_fa} {output} --sigma {params.sigma} --N auto --localaverageenergy
+    {input.exe} {input.plasmid_fa} {output.folder} --sigma {params.sigma} --N auto --localaverageenergy
     '''
+
+rule plot_bbprobs:
+    conda:
+        '../envs/R.yml'
+    input:
+        'output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/{plasmid}.{condition}.sigma{sigma}.{orrienation}.wig_bpprob'
+    output:
+        'output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/plots/plot.{plasmid}.{condition}.sigma{sigma}.{orrienation}.wig_bpprob.png'
+    params:
+        title=lambda wildcards: f"Bp probabilities {wildcards['plasmid']} {wildcards['condition']} {wildcards['orrienation']}"
+    script:'../scripts/plotbbprob.R'
+
+
