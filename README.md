@@ -48,3 +48,19 @@ being the negative strand. Accordingly the fasta header argument `strand` was se
 will flip strand orientation. Runs that used the `--reverse` argument
 have `rev` in the filename.
 
+## Running the workflow
+
+From the repo root directory.
+
+### Locally
+
+`snakemake -j 1 --use-conda`
+
+### On CRICK
+
+`snakemake --profile workflow/profile`
+
+or just
+
+`sbatch crick.sbatch`
+
