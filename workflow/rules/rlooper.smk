@@ -14,7 +14,7 @@ rule run_rlooper_reverse:
         plasmid_fa='workflow/data/{plasmid}.fa',
     output:
         folder='output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/{plasmid}.{condition}.sigma{sigma}.rev',
-        wig='output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/{plasmid}.{condition}.sigma{sigma}.rev.wig_bpprob'
+        wig='output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/{plasmid}.{condition}.sigma{sigma}.rev._bpprob.wig'
     params:
         sigma=lambda wildcards: wildcards['sigma']
     shell:'''
@@ -28,7 +28,7 @@ rule run_rlooper_fwd:
         plasmid_fa='workflow/data/{plasmid}.fa',
     output:
         folder='output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.fwd/{plasmid}.{condition}.sigma{sigma}.fwd',
-        wig='output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/{plasmid}.{condition}.sigma{sigma}.fwd.wig_bpprob'
+        wig='output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.fwd/{plasmid}.{condition}.sigma{sigma}.fwd_bpprob.wig'
     params:
         sigma=lambda wildcards: wildcards['sigma']
     shell:'''
@@ -39,9 +39,9 @@ rule plot_bbprobs:
     conda:
         '../envs/R.yml'
     input:
-        'output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/{plasmid}.{condition}.sigma{sigma}.{orrienation}.wig_bpprob'
+        'output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.{orrienation}/{plasmid}.{condition}.sigma{sigma}.{orrienation}_bpprob.wig'
     output:
-        'output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/plots/plot.{plasmid}.{condition}.sigma{sigma}.{orrienation}.wig_bpprob.png'
+        'output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.{orrienation}/plots/plot.{plasmid}.{condition}.sigma{sigma}.{orrienation}.wig_bpprob.png'
     params:
         title=lambda wildcards: f"Bp probabilities {wildcards['plasmid']} {wildcards['condition']} {wildcards['orrienation']}"
     script:'../scripts/plotbbprob.R'

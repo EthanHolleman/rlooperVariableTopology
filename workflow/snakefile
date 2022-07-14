@@ -4,7 +4,7 @@ conditions = pd.read_csv('workflow/conditions.tsv', sep='\t')
 
 runs = expand(
     expand(
-        'output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.rev/plots/plot.{plasmid}.{condition}.sigma{sigma}.fwd.wig_bpprob.png',
+        'output/rlooper/{plasmid}/{plasmid}.{condition}.sigma{sigma}.{orrientation}/plots/plot.{plasmid}.{condition}.sigma{sigma}.{orrientation}.wig_bpprob.png',
         zip, allow_missing=True, plasmid=list(conditions['plasmid']), condition=list(conditions['condition_name']),
         sigma=list(conditions['sigma'])
         ), orrientation=['fwd', 'rev']

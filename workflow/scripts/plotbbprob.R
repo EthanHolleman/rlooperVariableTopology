@@ -11,7 +11,7 @@ df <- as.data.frame(
     read.csv(bbprobs.path, skip = 4, header = F)
 )
 
-df$base <- seq(1, nrow(df), 1)
+df$base <- seq(1, nrow(df), 1)  # label basepair positions
 colnames(df) <- c('prob', 'base')
 
 # Plot probs as line along sequence
