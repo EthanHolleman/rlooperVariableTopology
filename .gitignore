@@ -1,2 +1,7 @@
 workflow/output/
+output/
 .snakemake/
+
+*.err
+*.out
+
