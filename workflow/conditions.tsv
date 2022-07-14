@@ -1,7 +1,9 @@
-condition_name	plasmid	sigma
-supercoiled	pFC53	-0.07
-supercoiled	pFC8	-0.07
-linear	pFC53	0
-linear	pFC8	0
-hypernegative	pFC53	-0.105
-hypernegative	pFC8	-0.105
+condition_name	plasmid	sigma	domain
+supercoiled	pFC53	-0.07	auto
+supercoiled	pFC8	-0.07	auto
+linear	pFC53	0	auto
+linear	pFC8	0	auto
+hypernegative	pFC53	-0.105	auto
+hypernegative	pFC8	-0.105	auto
+supercoiled_ecoli	pFC8	-0.05	auto
+suercoiled_ecoli	pFC53	-0.05	auto
