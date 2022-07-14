@@ -46,7 +46,7 @@ fasta header and specifies "which strand is the the non-template strand". Both p
 in the negative orientation resulting in the non-template strand
 being the negative strand. Accordingly the fasta header argument `strand` was set to `-` for all runs. However, just for kicks I also repeated the runs with the `--reverse` command line argument. This
 will flip strand orientation. Runs that used the `--reverse` argument
-have `rev` in the filename.
+have `rev` in the filename as the orientation; `fwd` otherwise.
 
 ## Running the workflow
 
