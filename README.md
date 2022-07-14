@@ -30,7 +30,7 @@ from E. Coli.
 
 ## Output
 
-Output from the run can be downloaded from the [releases page](). Runs are
+Output from the run can be downloaded from the [releases page](https://github.com/EthanHolleman/rlooperVariableTopology/releases). Runs are
 sorted first by plasmid and then by condition.
 
 ### File naming scheme
